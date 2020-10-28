@@ -10,6 +10,7 @@
 		8435BC822548F84900DC15DF /* StoryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435BC812548F84900DC15DF /* StoryLoader.swift */; };
 		8435BC842549349000DC15DF /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435BC832549349000DC15DF /* HTTPClient.swift */; };
 		8435BC872549380900DC15DF /* StoryItemMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435BC862549380900DC15DF /* StoryItemMapper.swift */; };
+		8435BC892549A5E500DC15DF /* HTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435BC882549A5E500DC15DF /* HTTPClientTests.swift */; };
 		84C1AEF02548D94A00E93BFD /* UnrdLeadDevTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C1AEE62548D94A00E93BFD /* UnrdLeadDevTest.framework */; };
 		84C1AEF72548D94A00E93BFD /* UnrdLeadDevTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 84C1AEE92548D94A00E93BFD /* UnrdLeadDevTest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		84C1AF012548D99B00E93BFD /* StoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C1AF002548D99B00E93BFD /* StoryItem.swift */; };
@@ -38,6 +39,7 @@
 		8435BC812548F84900DC15DF /* StoryLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryLoader.swift; sourceTree = "<group>"; };
 		8435BC832549349000DC15DF /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		8435BC862549380900DC15DF /* StoryItemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryItemMapper.swift; sourceTree = "<group>"; };
+		8435BC882549A5E500DC15DF /* HTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientTests.swift; sourceTree = "<group>"; };
 		84C1AEE62548D94A00E93BFD /* UnrdLeadDevTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UnrdLeadDevTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C1AEE92548D94A00E93BFD /* UnrdLeadDevTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnrdLeadDevTest.h; sourceTree = "<group>"; };
 		84C1AEEA2548D94A00E93BFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			children = (
 				84C1AEF62548D94A00E93BFD /* Info.plist */,
 				84C1AF142548EA4100E93BFD /* StoryLoaderTests.swift */,
+				8435BC882549A5E500DC15DF /* HTTPClientTests.swift */,
 			);
 			path = UnrdLeadDevTestTests;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8435BC892549A5E500DC15DF /* HTTPClientTests.swift in Sources */,
 				84C1AF152548EA4100E93BFD /* StoryLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,24 +7,7 @@
 //
 
 import XCTest
-
-class StoryLoader {
-    let client: HTTPClient
-    let url: URL
-   
-    init(client: HTTPClient, url: URL) {
-        self.client = client
-        self.url = url
-    }
-    
-    func load() {
-        client.get(from: url)
-    }
-}
-
-protocol HTTPClient {
-    func get(from url: URL)
-}
+import UnrdLeadDevTest
 
 final class StoryLoaderTests: XCTestCase {
     
@@ -32,16 +15,26 @@ final class StoryLoaderTests: XCTestCase {
         let client = HTTPClientSpy()
         _ = makeSUT()
        
-        XCTAssertNil(client.requestedURL)
+        XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
-    func test_load_LoadsWithCorrectURL() {
+    func test_load_loadsWithCorrectURL() {
         let givenURL = URL(string: "http://www.anyURL.com")!
         let (sut, client) = makeSUT(url: givenURL)
         
         sut.load()
         
-        XCTAssertEqual(client.requestedURL, givenURL)
+        XCTAssertEqual(client.requestedURLs, [givenURL])
+    }
+    
+    func test_loadTwice_loadsWithCorrectURLsTwice() {
+        let givenURL = URL(string: "http://www.anyURL.com")!
+        let (sut, client) = makeSUT(url: givenURL)
+        
+        sut.load()
+        sut.load()
+        
+        XCTAssertEqual(client.requestedURLs, [givenURL, givenURL])
     }
     
     // - Helpers
@@ -53,9 +46,9 @@ final class StoryLoaderTests: XCTestCase {
 }
 
 private class HTTPClientSpy: HTTPClient {
-    var requestedURL: URL?
-    
+    var requestedURLs = [URL]()
+
     func get(from url: URL) {
-        requestedURL = url
+        requestedURLs.append(url)
     }
 }

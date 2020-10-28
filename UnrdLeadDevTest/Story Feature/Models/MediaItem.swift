@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MediaItem {
+struct MediaItem: Equatable {
     enum MediaType {
         case image, video
     }

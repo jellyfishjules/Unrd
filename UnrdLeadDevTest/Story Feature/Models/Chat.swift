@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Chat {
+struct Chat: Equatable {
     let chatId: Int
     let timelineId: Int
     let name: String

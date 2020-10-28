@@ -12,8 +12,14 @@ public class StoryLoader {
     private let client: HTTPClient
     private let url: URL
    
+    public enum Result: Equatable {
+        case success(StoryItem)
+        case fail(Error)
+    }
+    
     public enum Error: Swift.Error {
         case general
+        case invalidData
     }
     
     public init(client: HTTPClient, url: URL) {
@@ -21,14 +27,24 @@ public class StoryLoader {
         self.url = url
     }
     
-    public func load(completion: @escaping (Error) -> Void) {
-        client.get(from: url) { error in
-            completion(.general)
+    public func load(completion: @escaping (Result) -> Void) {
+        client.get(from: url) { result in
+            switch result {
+            case .success:
+                completion(.fail(.invalidData))
+            case .fail:
+                completion(.fail(.general))
+            }
         }
     }
 }
 
+public enum HTTPClientResult {
+    case success(Data)
+    case fail(Error)
+}
+
 public protocol HTTPClient {
-    func get(from url: URL, completion: @escaping (Error) -> Void)
+    func get(from url: URL, completion: @escaping (HTTPClientResult) -> Void)
 }
 

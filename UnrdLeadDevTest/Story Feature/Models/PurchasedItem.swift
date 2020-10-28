@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct PurchasedItem {
+struct PurchasedItem: Equatable {
     let exchangeType: String
     let exchangeKey: Int
 }

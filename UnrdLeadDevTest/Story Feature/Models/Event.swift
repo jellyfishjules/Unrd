@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Event {
+struct Event: Equatable {
     let type: String
     let sequence: Int
     let data: EventData

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Timeline {
+struct Timeline: Equatable {
     let id: Int
     let name: String
     let isPrimary: Bool

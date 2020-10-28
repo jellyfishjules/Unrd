@@ -37,20 +37,33 @@ final class StoryLoaderTests: XCTestCase {
         XCTAssertEqual(client.requestedURLs, [givenURL, givenURL])
     }
     
-    func test_deliversError_whenClientErrors() {
+    func test_loadDeliversError_whenClientErrors() {
         let (sut, client) = makeSUT()
         let givenError = NSError(domain: "test", code: 0)
         
-        var capturedErrors = [StoryLoader.Error]()
-        sut.load { error in
-            capturedErrors.append(error)
+        var capturedResults = [StoryLoader.Result]()
+        sut.load { result in
+            capturedResults.append(result)
         }
         
-        client.capturedCompletions[0](givenError)
+        client.complete(with: givenError)
         
-        XCTAssertEqual(capturedErrors, [.general])
-        
+        XCTAssertEqual(capturedResults, [.fail(.general)])
     }
+    
+    func test_loadDeliversError_WhenJSONIsInvalidButClientDoesNotError() {
+        let (sut, client) = makeSUT()
+        
+        var capturedResults = [StoryLoader.Result]()
+        sut.load { result in
+            capturedResults.append(result)
+        }
+        let invalidJSON = Data("invalidJSON".utf8)
+        client.complete(with: invalidJSON)
+        
+        XCTAssertEqual(capturedResults, [.fail(.invalidData)])
+    }
+    
     
     // - Helpers
     
@@ -62,10 +75,18 @@ final class StoryLoaderTests: XCTestCase {
 
 private class HTTPClientSpy: HTTPClient {
     var requestedURLs = [URL]()
-    var capturedCompletions = [(Error) -> Void]()
+    var capturedCompletions = [(HTTPClientResult) -> Void]()
     
-    func get(from url: URL, completion: @escaping ((Error) -> Void)) {
+    func get(from url: URL, completion: @escaping ((HTTPClientResult) -> Void)) {
         requestedURLs.append(url)
         capturedCompletions.append(completion)
+    }
+    
+    func complete(with error: Error) {
+        capturedCompletions[0](.fail(error))
+    }
+    
+    func complete(with data: Data) {
+        capturedCompletions[0](.success(data))
     }
 }

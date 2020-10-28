@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct StoryItem {
+public struct StoryItem: Equatable {
     let storyId: Int
     let languageId: Int
     let genreId: Int

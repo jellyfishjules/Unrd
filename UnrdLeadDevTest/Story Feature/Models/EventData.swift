@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct EventData {
+struct EventData: Equatable {
     let chatMessageId: Int
     let chatId: Int
     let characterId: Int

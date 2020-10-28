@@ -46,7 +46,7 @@ final class StoryLoaderTests: XCTestCase {
             case let .fail(error as StoryLoader.Error):
                 XCTAssertEqual(error, .general)
             default:
-                XCTFail()
+                XCTFail("Expected StoryLoader.Error.general, got \(result) instead")
             }
         }
         
@@ -61,7 +61,7 @@ final class StoryLoaderTests: XCTestCase {
             case let .fail(error as StoryLoader.Error):
                 XCTAssertEqual(error, .invalidData)
             default:
-                XCTFail()
+                XCTFail("Expected StoryLoader.Error.invalidData, got \(result) instead")
             }
         }
         let invalidJSON = Data("invalidJSON".utf8)
@@ -77,7 +77,7 @@ final class StoryLoaderTests: XCTestCase {
             case let .success(story):
                 XCTAssertEqual(story, expectedStory)
             default:
-                XCTFail()
+                XCTFail("Expected \(expectedStory), got \(result) instead")
             }
         }
         

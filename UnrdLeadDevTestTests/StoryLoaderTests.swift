@@ -22,8 +22,8 @@ final class StoryLoaderTests: XCTestCase {
         let givenURL = URL(string: "http://www.anyURL.com")!
         let (sut, client) = makeSUT(url: givenURL)
         
-        sut.load()
-        
+        sut.load { _ in }
+
         XCTAssertEqual(client.requestedURLs, [givenURL])
     }
     
@@ -31,10 +31,25 @@ final class StoryLoaderTests: XCTestCase {
         let givenURL = URL(string: "http://www.anyURL.com")!
         let (sut, client) = makeSUT(url: givenURL)
         
-        sut.load()
-        sut.load()
+        sut.load { _ in }
+        sut.load { _ in }
         
         XCTAssertEqual(client.requestedURLs, [givenURL, givenURL])
+    }
+    
+    func test_deliversError_whenClientErrors() {
+        let (sut, client) = makeSUT()
+        let givenError = NSError(domain: "test", code: 0)
+        
+        var capturedErrors = [StoryLoader.Error]()
+        sut.load { error in
+            capturedErrors.append(error)
+        }
+        
+        client.capturedCompletions[0](givenError)
+        
+        XCTAssertEqual(capturedErrors, [.general])
+        
     }
     
     // - Helpers
@@ -47,8 +62,10 @@ final class StoryLoaderTests: XCTestCase {
 
 private class HTTPClientSpy: HTTPClient {
     var requestedURLs = [URL]()
-
-    func get(from url: URL) {
+    var capturedCompletions = [(Error) -> Void]()
+    
+    func get(from url: URL, completion: @escaping ((Error) -> Void)) {
         requestedURLs.append(url)
+        capturedCompletions.append(completion)
     }
 }

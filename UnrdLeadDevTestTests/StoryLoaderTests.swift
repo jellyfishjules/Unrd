@@ -14,25 +14,40 @@ class StoryLoader {
     init(client: HTTPClient) {
         self.client = client
     }
+    
+    func load() {
+        client.get(from: URL(string: "http://www.anyURL.com")!)
+    }
 }
 
 protocol HTTPClient {
-    func load()
+    func get(from url: URL)
 }
 
-final class StoryLoaderTests: XCTest {
+final class StoryLoaderTests: XCTestCase {
     
-    func test_init_DoesnNotLoadData() {
+    func test_init_doesNotLoadData() {
         let client = HTTPClientSpy()
         _ = StoryLoader(client: client)
+       
         XCTAssertNil(client.requestedURL)
+    }
+    
+    func test_load_LoadsWithCorrectURL() {
+        let givenURL = URL(string: "http://www.anyURL.com")
+        let client = HTTPClientSpy()
+        let sut = StoryLoader(client: client)
+        
+        sut.load()
+        
+        XCTAssertEqual(client.requestedURL, givenURL)
     }
 }
 
 private class HTTPClientSpy: HTTPClient {
     var requestedURL: URL?
     
-    func load() {
-        
+    func get(from url: URL) {
+        requestedURL = url
     }
 }

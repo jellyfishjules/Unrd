@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		84C1AEF02548D94A00E93BFD /* UnrdLeadDevTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C1AEE62548D94A00E93BFD /* UnrdLeadDevTest.framework */; };
-		84C1AEF52548D94A00E93BFD /* UnrdLeadDevTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C1AEF42548D94A00E93BFD /* UnrdLeadDevTestTests.swift */; };
 		84C1AEF72548D94A00E93BFD /* UnrdLeadDevTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 84C1AEE92548D94A00E93BFD /* UnrdLeadDevTest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		84C1AF012548D99B00E93BFD /* StoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C1AF002548D99B00E93BFD /* StoryItem.swift */; };
 		84C1AF042548E42400E93BFD /* MediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C1AF032548E42400E93BFD /* MediaItem.swift */; };
@@ -18,7 +17,8 @@
 		84C1AF0C2548E47500E93BFD /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C1AF0B2548E47500E93BFD /* Event.swift */; };
 		84C1AF0E2548E4A400E93BFD /* EventData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C1AF0D2548E4A400E93BFD /* EventData.swift */; };
 		84C1AF102548E4D000E93BFD /* PurchasedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C1AF0F2548E4D000E93BFD /* PurchasedItem.swift */; };
-		84C1AF132548E65600E93BFD /* StoryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C1AF122548E65600E93BFD /* StoryLoader.swift */; };
+		84C1AF132548E65600E93BFD /* StoryLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C1AF122548E65600E93BFD /* StoryLoading.swift */; };
+		84C1AF152548EA4100E93BFD /* StoryLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C1AF142548EA4100E93BFD /* StoryLoaderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +36,6 @@
 		84C1AEE92548D94A00E93BFD /* UnrdLeadDevTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnrdLeadDevTest.h; sourceTree = "<group>"; };
 		84C1AEEA2548D94A00E93BFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84C1AEEF2548D94A00E93BFD /* UnrdLeadDevTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnrdLeadDevTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		84C1AEF42548D94A00E93BFD /* UnrdLeadDevTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnrdLeadDevTestTests.swift; sourceTree = "<group>"; };
 		84C1AEF62548D94A00E93BFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84C1AF002548D99B00E93BFD /* StoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryItem.swift; sourceTree = "<group>"; };
 		84C1AF032548E42400E93BFD /* MediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItem.swift; sourceTree = "<group>"; };
@@ -46,7 +45,8 @@
 		84C1AF0B2548E47500E93BFD /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		84C1AF0D2548E4A400E93BFD /* EventData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventData.swift; sourceTree = "<group>"; };
 		84C1AF0F2548E4D000E93BFD /* PurchasedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedItem.swift; sourceTree = "<group>"; };
-		84C1AF122548E65600E93BFD /* StoryLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryLoader.swift; sourceTree = "<group>"; };
+		84C1AF122548E65600E93BFD /* StoryLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryLoading.swift; sourceTree = "<group>"; };
+		84C1AF142548EA4100E93BFD /* StoryLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryLoaderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +99,8 @@
 		84C1AEF32548D94A00E93BFD /* UnrdLeadDevTestTests */ = {
 			isa = PBXGroup;
 			children = (
-				84C1AEF42548D94A00E93BFD /* UnrdLeadDevTestTests.swift */,
 				84C1AEF62548D94A00E93BFD /* Info.plist */,
+				84C1AF142548EA4100E93BFD /* StoryLoaderTests.swift */,
 			);
 			path = UnrdLeadDevTestTests;
 			sourceTree = "<group>";
@@ -109,7 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				84C1AF112548E64000E93BFD /* Models */,
-				84C1AF122548E65600E93BFD /* StoryLoader.swift */,
+				84C1AF122548E65600E93BFD /* StoryLoading.swift */,
 			);
 			path = "Story Feature";
 			sourceTree = "<group>";
@@ -195,6 +195,7 @@
 					};
 					84C1AEEE2548D94A00E93BFD = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
 					};
 				};
 			};
@@ -246,7 +247,7 @@
 				84C1AF102548E4D000E93BFD /* PurchasedItem.swift in Sources */,
 				84C1AF0A2548E46800E93BFD /* Chat.swift in Sources */,
 				84C1AF0C2548E47500E93BFD /* Event.swift in Sources */,
-				84C1AF132548E65600E93BFD /* StoryLoader.swift in Sources */,
+				84C1AF132548E65600E93BFD /* StoryLoading.swift in Sources */,
 				84C1AF042548E42400E93BFD /* MediaItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,7 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84C1AEF52548D94A00E93BFD /* UnrdLeadDevTestTests.swift in Sources */,
+				84C1AF152548EA4100E93BFD /* StoryLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +445,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = X22ES47Z8A;
@@ -455,6 +457,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jellyfishapps.UnrdLeadDevTestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -463,6 +466,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = X22ES47Z8A;

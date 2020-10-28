@@ -13,6 +13,6 @@ enum LoadStoryResult {
     case fail(Error)
 }
 
-protocol StoryLoader {
+protocol StoryLoading {
     func load(completion: @escaping (LoadStoryResult) -> Void)
 }

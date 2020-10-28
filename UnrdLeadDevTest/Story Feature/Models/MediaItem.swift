@@ -8,16 +8,11 @@
 
 import Foundation
 
-struct MediaItem: Equatable {
-    enum MediaType {
-        case image, video
-    }
+public struct MediaItem: Equatable, Decodable {
     
-    let resource_id: Int
-    let resource_fid: String
-    let mediaType: MediaType
-    let resource_uri: URL?
-    let resourcePreset: String
-    let rsourceProcessed: Bool
-    let resourceProgress: Int
+    public init(resourceUri: URL?) {
+        self.resourceUri = resourceUri
+    }
+    public let resourceUri: URL?
+
 }

@@ -10,13 +10,15 @@ import XCTest
 
 class StoryLoader {
     let client: HTTPClient
-    
-    init(client: HTTPClient) {
+    let url: URL
+   
+    init(client: HTTPClient, url: URL) {
         self.client = client
+        self.url = url
     }
     
     func load() {
-        client.get(from: URL(string: "http://www.anyURL.com")!)
+        client.get(from: url)
     }
 }
 
@@ -28,19 +30,25 @@ final class StoryLoaderTests: XCTestCase {
     
     func test_init_doesNotLoadData() {
         let client = HTTPClientSpy()
-        _ = StoryLoader(client: client)
+        _ = makeSUT()
        
         XCTAssertNil(client.requestedURL)
     }
     
     func test_load_LoadsWithCorrectURL() {
-        let givenURL = URL(string: "http://www.anyURL.com")
-        let client = HTTPClientSpy()
-        let sut = StoryLoader(client: client)
+        let givenURL = URL(string: "http://www.anyURL.com")!
+        let (sut, client) = makeSUT(url: givenURL)
         
         sut.load()
         
         XCTAssertEqual(client.requestedURL, givenURL)
+    }
+    
+    // - Helpers
+    
+    private func makeSUT(url: URL = URL(string: "http://anyURL")!) -> (sut: StoryLoader, client:  HTTPClientSpy) {
+        let client = HTTPClientSpy()
+        return (StoryLoader(client: client, url: url), client)
     }
 }
 

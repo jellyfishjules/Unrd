@@ -41,55 +41,50 @@ final class StoryLoaderTests: XCTestCase {
         let (sut, client) = makeSUT()
         let givenError = NSError(domain: "test", code: 0)
         
-        var capturedResults = [StoryLoader.Result]()
         sut.load { result in
-            capturedResults.append(result)
+            switch result {
+            case let .fail(error as StoryLoader.Error):
+                XCTAssertEqual(error, .general)
+            default:
+                XCTFail()
+            }
         }
         
         client.complete(with: givenError)
-        
-        XCTAssertEqual(capturedResults, [.fail(.general)])
     }
     
     func test_loadDeliversError_WhenJSONIsInvalidButClientDoesNotError() {
         let (sut, client) = makeSUT()
         
-        var capturedResults = [StoryLoader.Result]()
         sut.load { result in
-            capturedResults.append(result)
+            switch result {
+            case let .fail(error as StoryLoader.Error):
+                XCTAssertEqual(error, .invalidData)
+            default:
+                XCTFail()
+            }
         }
         let invalidJSON = Data("invalidJSON".utf8)
         client.complete(with: invalidJSON)
-        
-        XCTAssertEqual(capturedResults, [.fail(.invalidData)])
     }
     
     func test_loadDeliversStory_WhenJSONIsValid() {
-           let (sut, client) = makeSUT()
-           
-           var capturedResults = [StoryLoader.Result]()
-           sut.load { result in
-               capturedResults.append(result)
-           }
+        let (sut, client) = makeSUT()
+        let (expectedStory, json) = makeStory(id: 123, name: "some name", shortSummary: "short summary", fullSummary: "full summary", listImages: [MediaItem (resourceUri: URL(string: "http://anyurl.com")!)])
+       
+        sut.load { result in
+            switch result {
+            case let .success(story):
+                XCTAssertEqual(story, expectedStory)
+            default:
+                XCTFail()
+            }
+        }
         
-        let story = makeStory(id: 123, name: "some name", shortSummary: "short summary", fullSummary: "full summary", listImages: [MediaItem (resourceUri: URL(string: "http://anyurl.com")!)])
-         
-        let imagesJSON = ["resource_uri": story.listImages![0].resourceUri!.absoluteString]
-        
-        let storyJSON: [String: Any] = ["story_id": story.storyId,
-                         "name": story.name,
-                         "short_summary": story.shortSumary,
-                         "full_summary": story.fullSummary,
-                         "list_image": [imagesJSON]]
-        
-        let validJSON = ["result": storyJSON]
-        
-        let data = try! JSONSerialization.data(withJSONObject: validJSON)
+        let data = try! JSONSerialization.data(withJSONObject: json)
+       
         client.complete(with: data)
-           
-        XCTAssertEqual(capturedResults, [.success(story)])
     }
-    
     
     // - Helpers
     
@@ -98,9 +93,19 @@ final class StoryLoaderTests: XCTestCase {
         return (StoryLoader(client: client, url: url), client)
     }
     
-    private func makeStory(id: Int, name: String, shortSummary: String, fullSummary: String, listImages: [MediaItem]) -> StoryItem {
+    private func makeStory(id: Int, name: String, shortSummary: String, fullSummary: String, listImages: [MediaItem]) -> (story: StoryItem, json: [String: Any]) {
+        let story = StoryItem(storyId: id, name: name, shortSummary: shortSummary, fullSummary: fullSummary, listImages: listImages)
+        let imagesJSON = ["resource_uri": story.listImages![0].resourceUri!.absoluteString]
         
-        return StoryItem(storyId: id, name: name, shortSummary: shortSummary, fullSummary: fullSummary, listImages: listImages)
+        let storyJSON: [String: Any] = ["story_id": story.storyId,
+                                        "name": story.name,
+                                        "short_summary": story.shortSumary,
+                                        "full_summary": story.fullSummary,
+                                        "list_image": [imagesJSON]]
+        
+        let validJSON = ["result": storyJSON]
+        
+        return (story, validJSON)
     }
     
     private func makeMediaItem(resourceUri: URL?) -> MediaItem {

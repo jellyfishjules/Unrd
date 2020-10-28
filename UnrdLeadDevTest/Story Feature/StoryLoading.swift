@@ -8,11 +8,11 @@
 
 import Foundation
 
-enum LoadStoryResult {
+public enum LoadStoryResult {
     case success(StoryItem)
     case fail(Error)
 }
 
-protocol StoryLoading {
+public protocol StoryLoading {
     func load(completion: @escaping (LoadStoryResult) -> Void)
 }

@@ -30,16 +30,11 @@ final class StoryViewController: UIViewController {
 
 final class StoryViewControllerTests: XCTestCase {
     
-    func test_init_doesNotLoadStory() {
-        let loader = StoryLoaderSpy()
-        let _ = StoryViewController(loader: loader)
-        
-        XCTAssertEqual(loader.loadCount, 0)
-    }
-    
-    func test_viewDidLoad_loadsStory() {
+    func test_init_doesNotLoadStoryUntilViewIsLoaded() {
         let loader = StoryLoaderSpy()
         let sut = StoryViewController(loader: loader)
+        
+        XCTAssertEqual(loader.loadCount, 0)
         
         sut.loadViewIfNeeded()
         

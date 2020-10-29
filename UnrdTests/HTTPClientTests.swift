@@ -20,7 +20,7 @@ final class URLSessionHTTPClientTests: XCTestCase {
     }
     
     func test_getFromURL_FailsWhenRequestErrors() {
-        let sut = URLSessionHTTPClientç()
+        let sut = URLSessionHTTPClient()
         let anyURL = URL(string: "https://anyURL.com")!
         let expectedError = NSError(domain: "Test", code: 0)
             

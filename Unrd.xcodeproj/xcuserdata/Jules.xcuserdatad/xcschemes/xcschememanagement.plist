@@ -4,15 +4,20 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Unrd.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
 		<key>UnrdAPIEndToEndTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>UnrdLeadDevTest.xcscheme_^#shared#^_</key>
+		<key>UnrdiOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -28,6 +33,16 @@
 			<true/>
 		</dict>
 		<key>84C1AEEE2548D94A00E93BFD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>84F9097A254B097600979C43</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>84F90982254B097600979C43</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -1,6 +1,6 @@
 //
 //  Event.swift
-//  UnrdLeadDevTest
+//  Unrd
 //
 //  Created by Julian Ramkissoon on 27/10/2020.
 //  Copyright © 2020 jellyfishapps. All rights reserved.

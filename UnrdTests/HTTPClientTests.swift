@@ -1,29 +1,13 @@
 //
 //  HTTPClientTests.swift
-//  UnrdLeadDevTestTests
+//  UnrdTests
 //
 //  Created by Julian Ramkissoon on 28/10/2020.
 //  Copyright © 2020 jellyfishapps. All rights reserved.
 //
 
 import XCTest
-import UnrdLeadDevTest
-
-final class URLSessionHTTPClient {
-    let session: URLSession
-    
-    init(session: URLSession = .shared) {
-        self.session = session
-    }
-    
-    func get(from url: URL, completion: @escaping (HTTPClientResult) -> Void) {
-        session.dataTask(with: url) { (_, _, error) in
-            if let error = error {
-                 completion(.fail(error))
-            }
-        }.resume()
-    }
-}
+import Unrd
 
 final class URLSessionHTTPClientTests: XCTestCase {
     
@@ -36,7 +20,7 @@ final class URLSessionHTTPClientTests: XCTestCase {
     }
     
     func test_getFromURL_FailsWhenRequestErrors() {
-        let sut = URLSessionHTTPClient()
+        let sut = URLSessionHTTPClientç()
         let anyURL = URL(string: "https://anyURL.com")!
         let expectedError = NSError(domain: "Test", code: 0)
             

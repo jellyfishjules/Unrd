@@ -9,24 +9,7 @@
 import XCTest
 import UIKit
 import Unrd
-
-final class StoryViewController: UIViewController {
-    
-    private var loader: StoryLoading?
-    
-    convenience init(loader: StoryLoading) {
-        self.init()
-        self.loader = loader
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        loader?.load(completion: { (_) in
-            
-        })
-    }
-}
-
+import UnrdiOS
 
 final class StoryViewControllerTests: XCTestCase {
     

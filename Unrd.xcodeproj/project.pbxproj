@@ -29,6 +29,7 @@
 		84F90984254B097600979C43 /* UnrdiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F9097B254B097600979C43 /* UnrdiOS.framework */; };
 		84F90993254B0B8600979C43 /* StoryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F90992254B0B8600979C43 /* StoryViewControllerTests.swift */; };
 		84F9099F254B118000979C43 /* Unrd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C1AEE62548D94A00E93BFD /* Unrd.framework */; platformFilter = ios; };
+		84F909A5254B13F000979C43 /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F909A4254B13F000979C43 /* StoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		84F90983254B097600979C43 /* UnrdiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnrdiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F9098A254B097600979C43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84F90992254B0B8600979C43 /* StoryViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewControllerTests.swift; sourceTree = "<group>"; };
+		84F909A4254B13F000979C43 /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				84F9097E254B097600979C43 /* Info.plist */,
+				84F909A4254B13F000979C43 /* StoryViewController.swift */,
 			);
 			path = UnrdiOS;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 					};
 					84F9097A254B097600979C43 = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
 					};
 					84F90982254B097600979C43 = {
 						CreatedOnToolsVersion = 11.6;
@@ -494,6 +498,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F909A5254B13F000979C43 /* StoryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -788,6 +793,7 @@
 		84F9098D254B097600979C43 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = X22ES47Z8A;
@@ -806,6 +812,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -814,6 +821,7 @@
 		84F9098E254B097600979C43 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = X22ES47Z8A;
@@ -841,6 +849,7 @@
 		84F90990254B097600979C43 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X22ES47Z8A;
@@ -863,6 +872,7 @@
 		84F90991254B097600979C43 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X22ES47Z8A;

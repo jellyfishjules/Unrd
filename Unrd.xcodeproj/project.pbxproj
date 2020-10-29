@@ -101,10 +101,11 @@
 		8435BC85254934FD00DC15DF /* API */ = {
 			isa = PBXGroup;
 			children = (
+				84C1AF122548E65600E93BFD /* StoryLoading.swift */,
 				8435BC812548F84900DC15DF /* StoryLoader.swift */,
 				8435BC832549349000DC15DF /* HTTPClient.swift */,
-				8435BC862549380900DC15DF /* StoryItemMapper.swift */,
 				8435BCB9254AF80C00DC15DF /* URLSessionHTTPClient.swift */,
+				8435BC862549380900DC15DF /* StoryItemMapper.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -161,7 +162,6 @@
 		84C1AF022548E3DD00E93BFD /* Story Feature */ = {
 			isa = PBXGroup;
 			children = (
-				84C1AF122548E65600E93BFD /* StoryLoading.swift */,
 				84C1AF112548E64000E93BFD /* Models */,
 				8435BC85254934FD00DC15DF /* API */,
 			);

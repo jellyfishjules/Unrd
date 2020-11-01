@@ -81,8 +81,6 @@ final class StoryViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.heroVideo(), URL(string: "https://d1puk6yab42f06.cloudfront.net/9e980267ac53246a65cefda96d33491e379ee8fddd46e6262c4fee7ae9e826a4_60bd18b18278638ed90046239c8e2e9e.jpg")!)
     }
     
-
-    
     private func makeSUT() -> (sut: StoryViewController, loader: StoryLoaderSpy) {
         let loader = StoryLoaderSpy()
         let sut = StoryUIComposer.composeStoryWith(storyLoader: loader)

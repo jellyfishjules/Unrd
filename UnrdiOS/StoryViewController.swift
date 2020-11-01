@@ -34,6 +34,9 @@ public final class StoryViewController: UIViewController {
             }
         }
         
+        // We can also user seperate controllers to manage the view models once we think the main VC is doing too much. For example if we decide to add some images, we can add an image controller, with its own view model and dependencies, which we can compose in the composition root. This will keep things very lightweight inside our main VC and other components.
+        
+        
         viewModel?.onStoryLoad = { [weak self] result in
             self?.nameLabel.isHidden = false
             self?.shortSummaryLabel.isHidden = false

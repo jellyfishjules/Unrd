@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="c4V-kp-9xm">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Story View Controller-->
+        <scene sceneID="puQ-C6-pq0">
+            <objects>
+                <viewController id="c4V-kp-9xm" customClass="StoryViewController" customModule="UnrdiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hq6-b1-rGN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="9Jx-nF-ZA8">
+                                <rect key="frame" x="188.5" y="434.5" width="37" height="37"/>
+                                <color key="color" red="0.56470588239999997" green="0.56078431370000004" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k3B-H7-OkW" customClass="PlayerView" customModule="UnrdiOS" customModuleProvider="target">
+                                <rect key="frame" x="20" y="44" width="374" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="tNK-cG-Ezx">
+                                <rect key="frame" x="20" y="64" width="374" height="778"/>
+                                <subviews>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLv-zv-ffh">
+                                        <rect key="frame" x="9" y="0.0" width="47" height="0.0"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUd-Zh-h3d">
+                                        <rect key="frame" x="0.0" y="0.0" width="65" height="0.0"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="gTG-Qx-WFB" firstAttribute="bottom" secondItem="tNK-cG-Ezx" secondAttribute="bottom" constant="20" id="Tp4-5Z-yxy"/>
+                            <constraint firstItem="k3B-H7-OkW" firstAttribute="leading" secondItem="hq6-b1-rGN" secondAttribute="leadingMargin" id="eac-RL-NJT"/>
+                            <constraint firstItem="tNK-cG-Ezx" firstAttribute="leading" secondItem="gTG-Qx-WFB" secondAttribute="leading" constant="20" id="l6j-0n-y5N"/>
+                            <constraint firstItem="9Jx-nF-ZA8" firstAttribute="centerX" secondItem="gTG-Qx-WFB" secondAttribute="centerX" id="q67-Fd-DEg"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="k3B-H7-OkW" secondAttribute="bottom" id="qUN-Pn-egL"/>
+                            <constraint firstItem="tNK-cG-Ezx" firstAttribute="top" secondItem="gTG-Qx-WFB" secondAttribute="top" constant="20" id="s7j-PX-Qb1"/>
+                            <constraint firstItem="gTG-Qx-WFB" firstAttribute="trailing" secondItem="tNK-cG-Ezx" secondAttribute="trailing" constant="20" id="v7U-nd-hOU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="k3B-H7-OkW" secondAttribute="trailing" id="w15-fM-TeD"/>
+                            <constraint firstItem="k3B-H7-OkW" firstAttribute="top" secondItem="hq6-b1-rGN" secondAttribute="topMargin" id="w96-xR-KlU"/>
+                            <constraint firstItem="9Jx-nF-ZA8" firstAttribute="centerY" secondItem="gTG-Qx-WFB" secondAttribute="centerY" id="xpi-EA-B9H"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gTG-Qx-WFB"/>
+                    </view>
+                    <connections>
+                        <outlet property="loadingIndicator" destination="9Jx-nF-ZA8" id="kpV-m6-PSA"/>
+                        <outlet property="nameLabel" destination="JLv-zv-ffh" id="PhE-SK-bU6"/>
+                        <outlet property="shortSummaryLabel" destination="BUd-Zh-h3d" id="mRX-LH-kyt"/>
+                        <outlet property="videoViewContainer" destination="k3B-H7-OkW" id="LF9-V3-vbB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DOb-l8-onW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="182" y="113"/>
+        </scene>
+    </scenes>
+</document>

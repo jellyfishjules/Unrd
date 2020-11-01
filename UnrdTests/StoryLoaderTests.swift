@@ -70,7 +70,7 @@ final class StoryLoaderTests: XCTestCase {
     
     func test_loadDeliversStory_WhenJSONIsValid() {
         let (sut, client) = makeSUT()
-        let (expectedStory, json) = makeStory(id: 123, name: "some name", shortSummary: "short summary", fullSummary: "full summary", listImages: [MediaItem (resourceUri: URL(string: "http://anyurl.com")!)])
+        let (expectedStory, json) = makeStory(id: 123, name: "some name", shortSummary: "short summary", fullSummary: "full summary", introVideos: [MediaItem (resourceUri: URL(string: "http://anyurl.com")!)])
        
         sut.load { result in
             switch result {
@@ -91,25 +91,6 @@ final class StoryLoaderTests: XCTestCase {
     private func makeSUT(url: URL = URL(string: "http://anyURL")!) -> (sut: StoryLoader, client:  HTTPClientSpy) {
         let client = HTTPClientSpy()
         return (StoryLoader(client: client, url: url), client)
-    }
-    
-    private func makeStory(id: Int, name: String, shortSummary: String, fullSummary: String, listImages: [MediaItem]) -> (story: StoryItem, json: [String: Any]) {
-        let story = StoryItem(storyId: id, name: name, shortSummary: shortSummary, fullSummary: fullSummary, listImages: listImages)
-        let imagesJSON = ["resource_uri": story.listImages![0].resourceUri!.absoluteString]
-        
-        let storyJSON: [String: Any] = ["story_id": story.storyId,
-                                        "name": story.name,
-                                        "short_summary": story.shortSumary,
-                                        "full_summary": story.fullSummary,
-                                        "list_image": [imagesJSON]]
-        
-        let validJSON = ["result": storyJSON]
-        
-        return (story, validJSON)
-    }
-    
-    private func makeMediaItem(resourceUri: URL?) -> MediaItem {
-        return MediaItem(resourceUri: resourceUri)
     }
 }
 

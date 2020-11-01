@@ -19,10 +19,10 @@ final class StoryItemMapper {
         let name: String
         let short_summary: String
         let full_summary: String
-        let list_image: [ItemImage]?
+        let intro_video: [ItemImage]?
         
         var storyItem: StoryItem {
-            return StoryItem(storyId: story_id, name: name, shortSummary: short_summary, fullSummary:full_summary, listImages: list_image?.map { $0.mediaItem })
+            return StoryItem(storyId: story_id, name: name, shortSummary: short_summary, fullSummary:full_summary, introVideos: intro_video?.map { $0.mediaItem })
         }
     }
 

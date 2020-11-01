@@ -21,6 +21,7 @@ public class PlayerView: UIView {
         self.url = URL
         let asset = AVAsset(url: URL)
         self.player = AVPlayer(playerItem: AVPlayerItem(asset: asset))
+        playerLayer.videoGravity = .resizeAspectFill
         player?.play()
     }
     

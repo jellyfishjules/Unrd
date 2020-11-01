@@ -94,11 +94,11 @@ private extension StoryViewController {
     }
     
     func isShowingNameLabel() -> Bool {
-        return !nameLabel.isHidden
+        return nameLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines) != ""
     }
     
     func isShowingShortSummaryLabel() -> Bool {
-        return !shortSummaryLabel.isHidden
+        return shortSummaryLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines) != ""
     }
     
     func heroVideo() -> URL? {

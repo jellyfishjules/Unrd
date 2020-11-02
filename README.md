@@ -8,3 +8,6 @@ The idea behind the UnrdIOS framework is that we can build all of our iOS specif
 
 Schemes - 
 There are 3 schemes. One platform agnostic, one iOS specific and 1 for running end to end tests which will actually hit the network. It's important to seperate these as they can be slow/flaky and we wouldnt want to run them often and so could add them in a CI pipeline.
+
+Usgae - 
+Simply embed the frameworks and compose the feature in the composition root. See here for working example https://github.com/jellyfishjules/UnrdiOSApp.

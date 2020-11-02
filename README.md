@@ -1,4 +1,4 @@
-# Unrd
+# Unrd Frameworks
 
 Frameworks -
 The idea behind the Unrd framework is that it is platfrom agnostic. This allows us to share code accross platforms easily. There is no UIKIt references which would rule out the framework being used on the mac for example.

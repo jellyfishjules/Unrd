@@ -29,13 +29,7 @@ public class StoryLoader: StoryLoading {
             switch result {
             case let .success(data):
                 if let item = try? StoryItemMapper.map(data) {
-                    if Thread.isMainThread {
-                        completion(.success(item))
-                    } else {
-                        DispatchQueue.main.async {
-                            completion(.success(item))
-                        }
-                    }
+                    completion(.success(item))
                 } else {
                     completion(.fail(StoryLoader.Error.invalidData))
                 }
@@ -43,7 +37,7 @@ public class StoryLoader: StoryLoading {
                 completion(.fail(StoryLoader.Error.general))
             }
         }
-    }
+}
 }
 
 
